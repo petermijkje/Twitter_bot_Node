@@ -9,6 +9,8 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
+Twitter.get 
+
 //status is the body of your message
 client.post('statuses/update', {status: 'This message was sent from my terminal!'},  function(error, tweet, response) {
   if(error) throw error;
