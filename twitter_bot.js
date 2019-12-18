@@ -9,10 +9,41 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
-Twitter.get 
+var retweet = function() {
+  var params = {
+      q: '#nodejs, #Nodejs',  // REQUIRED
+      result_type: 'recent',
+      lang: 'en'
+  }
+  client.get('search/tweets', params, function(err, data) {
+    // if there no errors
+      if (!err) {
+        // grab ID of tweet to retweet
+          var retweetId = data.statuses[0].id_str;
+          // Tell TWITTER to retweet
+          client.post('statuses/retweet/:id', {
+              id: retweetId
+          }, function(err, response) {
+              if (response) {
+                  console.log('Retweeted!!!');
+              }
+              // if there was an error while tweeting
+              if (err) {
+                  console.log('Something went wrong while RETWEETING... Duplication maybe...');
+              }
+          });
+      }
+      // if unable to Search a tweet
+      else {
+        console.log('Something went wrong while SEARCHING...');
+      }
+  });
+}
+retweet()
 
-//status is the body of your message
-client.post('statuses/update', {status: 'This message was sent from my terminal!'},  function(error, tweet, response) {
+
+// status is the body of your message
+client.post('statuses/update', {status: `This message was sent from my owner's terminal!`},  function(error, tweet, response) {
   if(error) throw error;
   console.log(tweet);  // Tweet body.
   console.log(response);  // Raw response object.
