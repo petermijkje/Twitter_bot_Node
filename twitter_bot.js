@@ -27,7 +27,7 @@ var retweet = function() {
               id: retweetId
           }, function(err, response) {
               if (response) {
-                  console.log('Retweeted!!!');
+                  console.log(retweetId);
               }
               // if there was an error while tweeting
               if (err) {
@@ -45,8 +45,8 @@ retweet()
 
 
 // this is to post a status
-client.post('statuses/update', {status: `This message was sent from my owner's terminal!`},  function(error, tweet, response) {
-  if(error) throw error;
-  console.log(tweet);  // Tweet body.
-  console.log(response);  // Raw response object.
-});
+// client.post('statuses/update', {status: `This message was sent from my owner's terminal!`},  function(error, tweet, response) {
+//   if(error) throw error;
+//   console.log(tweet);  // Tweet body.
+//   console.log(response);  // Raw response object.
+// });
