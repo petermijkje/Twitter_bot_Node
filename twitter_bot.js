@@ -15,5 +15,3 @@ client.post('statuses/update', {status: 'This message was sent from my terminal!
   console.log(tweet);  // Tweet body.
   console.log(response);  // Raw response object.
 });
-
-
