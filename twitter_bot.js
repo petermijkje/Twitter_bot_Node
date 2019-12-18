@@ -9,6 +9,8 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
+
+// retweet function
 var retweet = function() {
   var params = {
       q: '#nodejs, #Nodejs',  // REQUIRED
@@ -42,7 +44,7 @@ var retweet = function() {
 retweet()
 
 
-// status is the body of your message
+// this is to post a status
 client.post('statuses/update', {status: `This message was sent from my owner's terminal!`},  function(error, tweet, response) {
   if(error) throw error;
   console.log(tweet);  // Tweet body.
